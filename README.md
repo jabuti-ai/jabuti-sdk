@@ -1,5 +1,11 @@
 # Jabuti Platform SDK
 
-This is a simple example package. You can use
-[GitHub-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
+SDK para consumo dos serviços da Jabuti platform
+
+## Instalação
+
+`pip install --upgrade .`
+
+## Rodar exemplo
+
+`python ./examples/main.py`
