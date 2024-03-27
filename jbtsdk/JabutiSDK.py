@@ -13,7 +13,7 @@ class JabutiSDK():
             response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}", "context": f"{str(context)}"}), headers=headers)
             if callbacks:
                 for cb in callbacks:
-                    cb.on_llm_new_token(token=response)
+                    cb.on_llm_new_token(token=response.text)
             return response.text
         except Exception as e:
             print(f"Error: {e}")
