@@ -8,4 +8,6 @@ except:
     
 jsdk = JabutiSDK()
 
-print(jsdk.invoke('Quais os valores da tecban ?', 'codigo_conduta_tecban'))
+# print(jsdk.invoke('Quais os valores da tecban ?', 'codigo_conduta_tecban'))
+
+print(jsdk.list_contexts())
