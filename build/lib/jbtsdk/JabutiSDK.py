@@ -7,10 +7,10 @@ class JabutiSDK():
         self.api_url = api_url if api_url else os.getenv("JBT_SDK_API_URL")
         self.api_key = api_key if api_key else os.getenv("JBT_SDK_API_KEY")
         
-    def invoke(self, input):
+    def invoke(self, input, context):
         try:
             headers = {'x-api-key': self.api_key}
-            response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}"}), headers=headers)
+            response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}", "context": f"{str(context)}"}), headers=headers)
             return response.text
         except Exception as e:
             print(f"Error: {e}")
