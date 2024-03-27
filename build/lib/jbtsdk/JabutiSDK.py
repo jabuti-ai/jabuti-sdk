@@ -11,7 +11,7 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             response = requests.get(f"{self.api_url}/contexts", headers=headers)
-            return response.text
+            return response.json()
         except Exception as e:
             print(f"Error: {e}")
             return None
