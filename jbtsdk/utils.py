@@ -1,6 +1,7 @@
 from langchain.callbacks.base import BaseCallbackHandler
 import streamlit as st
 from langchain.memory import ConversationBufferMemory as LangchainConversationBufferMemory
+from langchain_community.chat_message_histories import StreamlitChatMessageHistory as LangchainStreamlitChatMessageHistory
 
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container: st.delta_generator.DeltaGenerator, initial_text: str = ""):
@@ -20,4 +21,7 @@ class StreamHandler(BaseCallbackHandler):
         self.container.markdown(self.text)
 
 class ConversationBufferMemory(LangchainConversationBufferMemory):
+    pass
+
+class StreamlitChatMessageHistory(LangchainStreamlitChatMessageHistory):
     pass
