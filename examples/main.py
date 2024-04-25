@@ -8,6 +8,11 @@ except:
     
 jsdk = JabutiSDK()
 
-# print(jsdk.fast_chat('Do que se trata o documento ?', 'context_name'))
+#Listar contextos existentes
+# print(jsdk.list_contexts())
 
-print(jsdk.list_contexts())
+# Criar ou atualizar contextos
+# jsdk.create_update_context("teste3", "teste_data.pdf")
+
+#Interagir com um contexto
+# print(jsdk.fast_chat('Do que se trata o documento ?', 'teste3'))

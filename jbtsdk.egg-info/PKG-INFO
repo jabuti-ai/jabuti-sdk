@@ -1,5 +1,8 @@
 Metadata-Version: 2.1
 Name: jbtsdk
-Version: 0.0.6
+Version: 0.0.13
 License-File: LICENSE
 Requires-Dist: requests
+Requires-Dist: langchain
+Requires-Dist: langchain_community
+Requires-Dist: streamlit

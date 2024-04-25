@@ -15,7 +15,20 @@ class JabutiSDK():
         except Exception as e:
             print(f"Error: {e}")
             return None
-
+    
+    def create_update_context(self, context_name, filename):
+        try:
+            headers = {'x-api-key': self.api_key}
+            payload = {'context_name': context_name}
+            files=[
+                ('file',(filename, open('teste_data.pdf','rb'), 'application/pdf'))
+            ]
+            response = requests.post(f"{self.api_url}/contexts", headers=headers, data=payload, files=files)
+            return response.json()
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
+        
     def fast_chat(self, input, context, callbacks=[]):
         try:
             headers = {'x-api-key': self.api_key}
