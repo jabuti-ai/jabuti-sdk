@@ -28,6 +28,16 @@ class JabutiSDK():
         except Exception as e:
             print(f"Error: {e}")
             return None
+    
+    def delete_context(self, context_name):
+        try:
+            headers = {'x-api-key': self.api_key}
+            payload = {'context_name': context_name}
+            response = requests.delete(f"{self.api_url}/contexts", headers=headers, data=payload)
+            return response.json()
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
         
     def fast_chat(self, input, context, callbacks=[]):
         try:
