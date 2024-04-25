@@ -10,7 +10,7 @@ class JabutiSDK():
     def list_contexts(self):
         try:
             headers = {'x-api-key': self.api_key}
-            response = requests.get(f"{self.api_url}/contexts", headers=headers)
+            response = requests.get(f"{self.api_url}/contexts", headers=headers, timeout=15)
             return response.json()
         except Exception as e:
             print(f"Error: {e}")
@@ -23,7 +23,7 @@ class JabutiSDK():
             files=[
                 ('file',(filename, open('teste_data.pdf','rb'), 'application/pdf'))
             ]
-            response = requests.post(f"{self.api_url}/contexts", headers=headers, data=payload, files=files)
+            response = requests.post(f"{self.api_url}/contexts", headers=headers, data=payload, files=files, timeout=60)
             return response.json()
         except Exception as e:
             print(f"Error: {e}")
@@ -33,7 +33,7 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             payload = {'context_name': context_name}
-            response = requests.delete(f"{self.api_url}/contexts", headers=headers, data=payload)
+            response = requests.delete(f"{self.api_url}/contexts", headers=headers, data=payload, timeout=15)
             return response.json()
         except Exception as e:
             print(f"Error: {e}")
@@ -42,7 +42,7 @@ class JabutiSDK():
     def fast_chat(self, input, context, callbacks=[]):
         try:
             headers = {'x-api-key': self.api_key}
-            response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}", "context": f"{str(context)}"}), headers=headers)
+            response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}", "context": f"{str(context)}"}), headers=headers, timeout=60)
             if callbacks:
                 for cb in callbacks:
                     cb.on_llm_new_token(token=response.text)
