@@ -39,10 +39,10 @@ class JabutiSDK():
             print(f"Error: {e}")
             return None
         
-    def fast_chat(self, input, context, callbacks=[]):
+    def fast_chat(self, input, callbacks=[]):
         try:
             headers = {'x-api-key': self.api_key}
-            response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}", "context": f"{str(context)}"}), headers=headers, timeout=60)
+            response = requests.post(self.api_url, data=json.dumps({"input": f"{str(input)}"}), headers=headers, timeout=60)
             if callbacks:
                 for cb in callbacks:
                     cb.on_llm_new_token(token=response.text)

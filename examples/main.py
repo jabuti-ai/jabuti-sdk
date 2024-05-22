@@ -12,10 +12,10 @@ jsdk = JabutiSDK()
 print(jsdk.list_contexts())
 
 # Criar ou atualizar contextos
-# jsdk.create_update_context("teste3", "teste_data.pdf")
+# jsdk.create_update_context("teste3")
 
 #Interagir com um contexto
-# print(jsdk.fast_chat('Do que se trata o documento ?', 'teste3'))
+# print(jsdk.fast_chat('Do que se trata o documento ?'))
 
 # Deletar contexto
 jsdk.delete_context("teste3")
