@@ -54,3 +54,16 @@ class JabutiSDK():
         except Exception as e:
             print(f"Error: {e}")
             return None
+        
+    async def async_fast_chat(self, input, username=None ,callbacks=[]):
+        _payload = dict()
+        _payload["input"] = str(input)
+        if username:
+            _payload["username"] = username
+        try:
+            headers = {'x-api-key': self.api_key}
+            response = await requests.post(self.api_url, data=json.dumps(_payload), headers=headers, timeout=60)
+            return response.text
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
