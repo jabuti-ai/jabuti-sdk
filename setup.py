@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='jbtsdk',
-    version='0.0.23',
+    version='0.0.24',
     install_requires=[
         "requests",
         "langchain",
