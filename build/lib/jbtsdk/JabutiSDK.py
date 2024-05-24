@@ -17,13 +17,12 @@ class JabutiSDK():
             print(f"Error: {e}")
             raise Exception("Falha na listagem de conhecimentos.")
     
-    def create_update_context(self, context_name, filename):
+    def create_update_context(self, context_name, extension, file):
         try:
             headers = {'x-api-key': self.api_key}
             payload = {'context_name': context_name}
-            extension = filename.split(".")[-1]
             files=[
-                ('file',(filename, open(f'{filename}','rb'), f'application/{extension}'))
+                ('file',(f"{context_name}.{extension}", file, f'application/{extension}'))
             ]
             response = requests.post(f"{self.api_url}/contexts", headers=headers, data=payload, files=files, timeout=60)
             print(f"response: {response.text}")
