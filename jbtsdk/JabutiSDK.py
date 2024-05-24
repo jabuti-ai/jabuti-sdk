@@ -21,11 +21,11 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             payload = {'context_name': context_name}
-            with open(f"{context_name}.{extension}", "w") as f:
+            with open(f"{context_name}.{extension}", "wb") as f:
                 f.write(file)
 
             files=[
-                ('file',(f"{context_name}.{extension}", open(f"{context_name}.{extension}", "r"), f'application/{extension}'))
+                ('file',(f"{context_name}.{extension}", open(f"{context_name}.{extension}", "rb"), f'application/{extension}'))
             ]
             response = requests.post(f"{self.api_url}/contexts", headers=headers, data=payload, files=files, timeout=60)
             print(f"response: {response.text}")
