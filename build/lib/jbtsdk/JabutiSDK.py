@@ -76,3 +76,35 @@ class JabutiSDK():
         except Exception as e:
             print(f"Error: {e}")
             raise Exception("Falha na execução.")
+        
+    def list_prompts(self):
+        try:
+            headers = {'x-api-key': self.api_key}
+            response = requests.get(f"{self.api_url}/prompts", headers=headers, timeout=15)
+            print(f"response: {response.text}")
+            return response.json()
+        except Exception as e:
+            print(f"Error: {e}")
+            raise Exception("Falha na listagem de comportamentos.")
+        
+    def create_prompt(self, prompt):
+        try:
+            headers = {'x-api-key': self.api_key}
+            payload = {'prompt': prompt}
+            response = requests.post(f"{self.api_url}/prompts", headers=headers, data=payload, timeout=15)
+            print(f"response: {response.text}")
+            return response.json()
+        except Exception as e:
+            print(f"Error: {e}")
+            raise Exception("Falha na criação de comportamento.")
+    
+    def delete_prompt(self, prompt):
+        try:
+            headers = {'x-api-key': self.api_key}
+            payload = {'prompt': prompt}
+            response = requests.delete(f"{self.api_url}/prompts", headers=headers, data=payload, timeout=15)
+            print(f"response: {response.text}")
+            return response.json()
+        except Exception as e:
+            print(f"Error: {e}")
+            raise Exception("Falha ao deletar comportamento.")
