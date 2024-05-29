@@ -53,11 +53,10 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             response = requests.post(self.api_url, data=json.dumps(_payload), headers=headers, timeout=60)
-            if callbacks:
-                for cb in callbacks:
-                    cb.on_llm_new_token(token=response.text)
-            print(f"response: {response.content}")
-            return response.content
+            # if callbacks:
+            #     for cb in callbacks:
+            #         cb.on_llm_new_token(token=response.text)
+            return response.content.decode('UTF-8')
             
         except Exception as e:
             print(f"Error: {e}")
@@ -71,8 +70,7 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             response = await requests.post(self.api_url, data=json.dumps(_payload), headers=headers, timeout=60)
-            print(f"response: {response.text}")
-            return response.text
+            return response.content.decode('UTF-8')
         except Exception as e:
             print(f"Error: {e}")
             raise Exception("Falha na execução.")
