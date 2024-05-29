@@ -91,7 +91,7 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             payload = {'prompt': prompt}
-            response = requests.post(f"{self.api_url}/prompts", headers=headers, data=payload, timeout=15)
+            response = requests.post(f"{self.api_url}/prompts", headers=headers, data=json.dumps(payload), timeout=15)
             print(f"response: {response.text}")
             return response.json()
         except Exception as e:
@@ -102,7 +102,7 @@ class JabutiSDK():
         try:
             headers = {'x-api-key': self.api_key}
             payload = {'prompt': prompt}
-            response = requests.delete(f"{self.api_url}/prompts", headers=headers, data=payload, timeout=15)
+            response = requests.delete(f"{self.api_url}/prompts", headers=headers, data=json.dumps(payload), timeout=15)
             print(f"response: {response.text}")
             return response.json()
         except Exception as e:
