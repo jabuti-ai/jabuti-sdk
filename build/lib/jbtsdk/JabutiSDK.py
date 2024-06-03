@@ -56,7 +56,8 @@ class JabutiSDK():
             # if callbacks:
             #     for cb in callbacks:
             #         cb.on_llm_new_token(token=response.text)
-            return response.content.decode('UTF-8')
+            # return response.content.decode('UTF-8')
+            return response.text
             
         except Exception as e:
             print(f"Error: {e}")

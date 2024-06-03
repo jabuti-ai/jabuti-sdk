@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='jbtsdk',
     description=u'SDK Jabuti Technologies',
-    version='0.0.29',
+    version='0.0.30',
     license='MIT License',
     author='Thales Araújo',
     install_requires=[
